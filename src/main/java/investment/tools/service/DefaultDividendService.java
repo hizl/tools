@@ -3,13 +3,34 @@ package investment.tools.service;
 import investment.tools.dto.DividendsDto;
 import investment.tools.entity.Dividends;
 import investment.tools.exception.ValidationException;
+import investment.tools.repository.DividendRepository;
+import lombok.AllArgsConstructor;
 
 
 import java.util.List;
 
 import static java.util.Objects.isNull;
 
+
+@AllArgsConstructor
 public class DefaultDividendService implements DividendService {
+
+    private final DividendRepository dividendRepository;
+    private final DividendsConverter usersConverter;
+
+
+
+
+
+
+/*  constructor inject it into the controller. Im use annotation @AllArgsConstructor in this class
+
+    public DefaultDividendService(DividendRepository dividendRepository, DividendsConverter usersConverter) {
+        this.dividendRepository = dividendRepository;
+        this.usersConverter = usersConverter;
+    }*/
+
+
 
     @Override
     public DividendsDto saveUser(DividendsDto usersDto) {
@@ -36,7 +57,7 @@ public class DefaultDividendService implements DividendService {
 
     private void validateUserDto(DividendsDto dividendsDto) throws ValidationException {
         if (isNull(dividendsDto)) {
-            throw new ValidationException("Object user is null");
+            throw new ValidationException("Object is null");
         }
         if (isNull(dividendsDto.getCurrentCompany()) || dividendsDto.getCurrentPrice().isEmpty()) {
             throw new ValidationException("Current company or current price is empty");
@@ -44,17 +65,6 @@ public class DefaultDividendService implements DividendService {
     }
 
 
-
-
-
-    public Dividends fromUserDtoToUser(DividendsDto dividendsDto) {
-        Dividends dividends = new Dividends();
-        dividends.setId(dividendsDto.getId());
-        dividends.setMy_current_date(dividendsDto.getCurrentDate());
-        dividends.setMy_current_company(dividendsDto.getCurrentCompany());
-        dividends.setMy_current_price(dividendsDto.getCurrentPrice());
-        return dividends;
-    }
 
 
 
