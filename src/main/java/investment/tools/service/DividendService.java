@@ -1,16 +1,15 @@
 package investment.tools.service;
 
 import investment.tools.dto.DividendsDto;
+import investment.tools.entity.Dividends;
 
 import java.util.List;
 
 public interface DividendService {
 
-    DividendsDto saveUser(DividendsDto usersDto);
+    void deleteDividends(Integer id);
 
-    void deleteDividend(Integer userId);
-
-    DividendsDto findByCompany(String company);
 
     List<DividendsDto> findAll();
+
 }
