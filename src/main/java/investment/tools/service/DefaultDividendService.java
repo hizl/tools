@@ -1,56 +1,67 @@
 package investment.tools.service;
 
+
 import investment.tools.dto.DividendsDto;
 import investment.tools.entity.Dividends;
 import investment.tools.exception.ValidationException;
-import investment.tools.repository.DividendRepository;
-import lombok.AllArgsConstructor;
+import investment.tools.repository.DividendsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-
-@AllArgsConstructor
+@Service
 public class DefaultDividendService implements DividendService {
 
-    private final DividendRepository dividendRepository;
-    private final DividendsConverter usersConverter;
+    private final DividendsRepository dividendsRepository ;
+    private final DividendsConverter dividendsConverter;
+
+
+    @Autowired
+    public DefaultDividendService(DividendsRepository dividendsRepository, DividendsConverter dividendsConverter) {
+        this.dividendsRepository = dividendsRepository;
+        this.dividendsConverter = dividendsConverter;
+    }
 
 
 
+    /*    @Override
+    public DividendsDto saveDividends(DividendsDto dividendsDto) {
+        try {
+            validateUserDto(dividendsDto);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+        }
+        Dividends dividends = dividendsConverter.fromDividendDtoToDividends(dividendsDto);
+        Dividends savedDividends = dividendsRepository.save(dividends);
 
+        return  dividendsConverter.fromDividendDtoToDividends(savedDividends);
 
-
-/*  constructor inject it into the controller. Im use annotation @AllArgsConstructor in this class
-
-    public DefaultDividendService(DividendRepository dividendRepository, DividendsConverter usersConverter) {
-        this.dividendRepository = dividendRepository;
-        this.usersConverter = usersConverter;
     }*/
 
 
-
     @Override
-    public DividendsDto saveUser(DividendsDto usersDto) {
-        return null;
+    public void deleteDividends(Integer id) {
+        dividendsRepository.deleteById(id);
     }
 
-    @Override
-    public void deleteDividend(Integer userId) {
 
-    }
 
-    @Override
-    public DividendsDto findByCompany(String company) {
-        return null;
-    }
+
 
     @Override
     public List<DividendsDto> findAll() {
-        return null;
+        return dividendsRepository.findAll()
+                .stream()
+                .map(dividendsConverter::FFF)
+                .collect(Collectors.toList());
     }
+
+
 
 
 

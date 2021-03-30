@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Dividends {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column
