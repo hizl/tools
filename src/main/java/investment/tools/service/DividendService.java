@@ -12,4 +12,6 @@ public interface DividendService {
 
     List<DividendsDto> findAll();
 
+
+    DividendsDto findById(Integer id);
 }
