@@ -15,15 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/d")
 @Log
-
+@RequestMapping("/d")
 public class DividendsController {
 
-
     private  final DividendService dividendService;
-
-
 
 
     @Autowired
@@ -35,9 +31,9 @@ public class DividendsController {
 
 
 
-    @GetMapping("/findAll")
-    public List<DividendsDto> findAllUsers() {
-        log.info("Handling find all users request");
+    @GetMapping(  "/findAll")
+    public List<DividendsDto> findAll() {
+        log.info("Handling find all request");
         return dividendService.findAll();
     }
 
@@ -45,11 +41,17 @@ public class DividendsController {
 
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUsers(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         dividendService.deleteDividends(id);
         return ResponseEntity.ok().build();
     }
 
+
+    @GetMapping("/findByLogin")
+    public DividendsDto findById(@RequestParam Integer id) {
+        log.info("Handling find by login request: " + id);
+        return dividendService.findById(id);
+    }
 
 
 }

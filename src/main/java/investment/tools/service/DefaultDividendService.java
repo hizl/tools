@@ -65,6 +65,20 @@ public class DefaultDividendService implements DividendService {
 
 
 
+    @Override
+    public DividendsDto findById(Integer id) {
+        Dividends dividends = dividendsRepository.findByid(id);
+        if (dividends != null) {
+            return dividendsConverter.fromDividendsDtoToUserDto(dividends);
+        }
+        return null;
+    }
+
+
+
+
+
+
 
     private void validateUserDto(DividendsDto dividendsDto) throws ValidationException {
         if (isNull(dividendsDto)) {
