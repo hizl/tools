@@ -4,12 +4,8 @@ package investment.tools.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 
 
@@ -20,6 +16,13 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor()
 public class Dividends {
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "details_id")
+    private ContactDetails contactDetails;
+
+
+
 
 
     @Id
@@ -34,9 +37,12 @@ public class Dividends {
     private String my_current_company;
 
     @Column(name = "my_current_price")
-    private String my_current_price;
+    private Integer my_current_price;
 
-    public Dividends(String my_current_date, String my_current_company, String my_current_price) {
+
+
+
+    public Dividends(String my_current_date, String my_current_company, Integer my_current_price) {
         this.my_current_date = my_current_date;
         this.my_current_company = my_current_company;
         this.my_current_price = my_current_price;
