@@ -11,7 +11,7 @@ public class DividendsDto {
     private Integer id;
     private String currentDate;
     private String currentCompany;
-    private String currentPrice;
+    private Integer currentPrice;
 
 
 }

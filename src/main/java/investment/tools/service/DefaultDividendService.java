@@ -84,7 +84,7 @@ public class DefaultDividendService implements DividendService {
         if (isNull(dividendsDto)) {
             throw new ValidationException("Object is null");
         }
-        if (isNull(dividendsDto.getCurrentCompany()) || dividendsDto.getCurrentPrice().isEmpty()) {
+        if (isNull(dividendsDto.getCurrentCompany()) || dividendsDto.getCurrentPrice() == null) {
             throw new ValidationException("Current company or current price is empty");
         }
     }
