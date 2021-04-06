@@ -32,4 +32,18 @@ public class ContactDetails {
         this.name_contact = name_contact;
         this.surname_contact = surname_contact;
     }
+
+
+
+    /*
+
+
+    bellow code mean this it:
+    i adding class "Dividends-class" from one-two-one BI Directional.
+    */
+
+
+    @OneToOne(mappedBy = "contactDetails")
+    Dividends dividends;
+
 }

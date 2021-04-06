@@ -17,8 +17,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor()
 public class Dividends {
 
+    //описание связи
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "details_id")
+    //
+
     private ContactDetails contactDetails;
 
 
