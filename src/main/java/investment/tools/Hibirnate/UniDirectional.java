@@ -4,14 +4,19 @@ import investment.tools.entity.ContactDetails;
 import investment.tools.entity.Dividends;
 import org.hibernate.Session;
 
+
+
+// this UniDirectional execute cascade some object and execute other object as part of this object
+
 public class UniDirectional {
 
     public static void main(String[] args) {
-        getUniDirectional();
+        getDividendsAndDetails();
+
     }
 
 
-    public static void getUniDirectional(){
+    public static void addUniDirectional(){
 
         //using util class HibernateConnector and her methods
         HibernateConnector.getSessionFactoryWithContactDetails();
@@ -28,9 +33,7 @@ public class UniDirectional {
                     new Dividends("01.02.1900","FORD",4_000_000);
 
             ContactDetails contactDetails =
-                    new ContactDetails("Henry","Ford");
-
-
+                    new ContactDetails("Just","Ford");
             //add details
             dividends.setContactDetails(contactDetails);
 
@@ -52,6 +55,71 @@ public class UniDirectional {
 
         }
     }
+
+
+
+    public static void getDividendsAndDetails(){
+        HibernateConnector.getSessionFactoryWithContactDetails();
+
+        Session session = null;
+
+        try {
+
+            //get current session
+
+            session = HibernateConnector.getSessionFactoryWithContactDetails().getCurrentSession();
+
+
+            //begin transaction
+            session.beginTransaction();
+
+
+            //create object
+            Dividends dividends = session.get(Dividends.class,6);
+
+
+            //
+            //System.out.println(dividends);
+
+
+            //get transaction commit and close
+            session.getTransaction().commit();
+
+        }
+        finally {
+
+            // if don't work    session.getTransaction().commit();   ,  then need execute session.close()
+            //session.close();
+            HibernateConnector.closeSessionFactory();
+        }
+    }
+
+
+    public static void deleteDividendsAndDetailsCascade(){
+        HibernateConnector.getSessionFactoryWithContactDetails();
+
+        Session session = null;
+
+
+
+        try {
+            session = HibernateConnector.getSessionFactoryWithContactDetails().getCurrentSession();
+
+            session.beginTransaction();
+
+            Dividends dividends = session.get(Dividends.class,6);
+
+
+            session.delete(dividends);
+            session.getTransaction().commit();
+        }
+        finally {
+            HibernateConnector.closeSessionFactory();
+        }
+
+
+    }
+
 
 
 

@@ -21,6 +21,7 @@ public class HibernateConnector {
 
 
     //obtain sessionFactory with ContactDetail's class
+    //this method possibility for the work and delete table with cascade
     public static SessionFactory getSessionFactoryWithContactDetails() {
         sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
