@@ -17,7 +17,7 @@ _**Описание**_
 поэтому я просто повторил, мои отличия будут в использование MySQL - базы данных.
 Затем я создал базу данных. **FINANCE**, с необходимыми таблицами, которые выглядят вот так:
 
-__CREATE TABLE DIVIDENDS
+<CREATE TABLE DIVIDENDS
 (
 id                 MEDIUMINT   NOT NULL AUTO_INCREMENT,
 my_current_date    VARCHAR(20) NOT NULL,
@@ -34,9 +34,9 @@ create table CONTACT_DETAILS
 id_contact      int primary key not null auto_increment,
 name_contact    VARCHAR(20)     NOT NULL,
 surname_contact VARCHAR(20)     NOT NULL
-);__
+);>
 
-В данной таблице стоит уделить внимание что, вторичный ключ из таблицы DIVIDENDS указывает на поле
+В данной таблице стоит уделить внимание, что вторичный ключ из таблицы DIVIDENDS указывает на поле
 details_id, который в свою очередь ссылается на таблицу CONTACT_DETAILS и ее автоинкрементируемое поле
 id_contact.
 
@@ -54,7 +54,7 @@ UniDirectional, BiDirectional, @OneToOne(...)
 
 Я рассмотрю UniDirectional отношения с аннотацией @OneToOne(....)
 
-
+```
 class Dividends {
         field....
         getters and setters and constructor
@@ -68,6 +68,7 @@ class Dividends {
         @JoinColumn(name = "details_id")
         private ContactDetails contactDetails;
 }
+```
 
 Аннотация @OneToOne означает что у класса Dividends есть отношения с классом ContactsDetails.
 Параметры в скобках (cascade = CascadeType.ALL) означает возможные события для каскадирования.
