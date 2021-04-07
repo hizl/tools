@@ -21,7 +21,6 @@ public class Dividends {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "details_id")
     //
-
     private ContactDetails contactDetails;
 
 

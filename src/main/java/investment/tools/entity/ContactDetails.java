@@ -43,7 +43,7 @@ public class ContactDetails {
     */
 
 
-    @OneToOne(mappedBy = "contactDetails")
+    @OneToOne(mappedBy = "contactDetails",cascade = CascadeType.ALL)
     Dividends dividends;
 
 }
