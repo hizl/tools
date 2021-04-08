@@ -1,11 +1,11 @@
 package investment.tools.repository;
 
-import investment.tools.entity.Dividends;
+import investment.tools.entity.exampleOneToOne.Dividends;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DividendsRepository extends JpaRepository<Dividends, Integer> {
+public interface DividendsRepository extends JpaRepository<Dividends, Long> {
 
 
 
-    Dividends findByid(Integer id);
+    Dividends findByid(Long id);
 }

@@ -2,7 +2,7 @@ package investment.tools.service;
 
 
 import investment.tools.dto.DividendsDto;
-import investment.tools.entity.Dividends;
+import investment.tools.entity.exampleOneToOne.Dividends;
 import investment.tools.exception.ValidationException;
 import investment.tools.repository.DividendsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,7 @@ public class DefaultDividendService implements DividendService {
 
 
     @Override
-    public void deleteDividends(Integer id) {
+    public void deleteDividends(Long id) {
         dividendsRepository.deleteById(id);
     }
 
@@ -66,7 +66,7 @@ public class DefaultDividendService implements DividendService {
 
 
     @Override
-    public DividendsDto findById(Integer id) {
+    public DividendsDto findById(Long id) {
         Dividends dividends = dividendsRepository.findByid(id);
         if (dividends != null) {
             return dividendsConverter.fromDividendsDtoToUserDto(dividends);

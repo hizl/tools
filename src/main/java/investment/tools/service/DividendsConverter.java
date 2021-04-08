@@ -2,7 +2,7 @@ package investment.tools.service;
 
 
 import investment.tools.dto.DividendsDto;
-import investment.tools.entity.Dividends;
+import investment.tools.entity.exampleOneToOne.Dividends;
 import org.springframework.stereotype.Component;
 
 

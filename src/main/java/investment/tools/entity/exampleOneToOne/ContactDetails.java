@@ -1,4 +1,4 @@
-package investment.tools.entity;
+package investment.tools.entity.exampleOneToOne;
 
 
 import lombok.AllArgsConstructor;
