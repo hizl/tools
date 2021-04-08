@@ -2,8 +2,6 @@ package investment.tools.controllers;
 
 
 import investment.tools.dto.DividendsDto;
-import investment.tools.entity.Dividends;
-import investment.tools.service.DefaultDividendService;
 import investment.tools.service.DividendService;
 
 
@@ -41,14 +39,14 @@ public class DividendsController {
 
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         dividendService.deleteDividends(id);
         return ResponseEntity.ok().build();
     }
 
 
     @GetMapping("/findByLogin")
-    public DividendsDto findById(@RequestParam Integer id) {
+    public DividendsDto findById(@RequestParam Long id) {
         log.info("Handling find by login request: " + id);
         return dividendService.findById(id);
     }

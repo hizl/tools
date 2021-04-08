@@ -1,7 +1,7 @@
-package investment.tools.Hibirnate;
+package investment.tools.Hibirnate.OneToOne;
 
-import investment.tools.entity.ContactDetails;
-import investment.tools.entity.Dividends;
+import investment.tools.entity.exampleOneToOne.ContactDetails;
+import investment.tools.entity.exampleOneToOne.Dividends;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

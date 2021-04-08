@@ -1,15 +1,15 @@
-package investment.tools.Hibirnate;
+package investment.tools.Hibirnate.OneToOne.UniDirectional;
 
-import investment.tools.entity.ContactDetails;
-import investment.tools.entity.Dividends;
+import investment.tools.Hibirnate.OneToOne.HibernateConnector;
+import investment.tools.entity.exampleOneToOne.ContactDetails;
+import investment.tools.entity.exampleOneToOne.Dividends;
 import org.hibernate.Session;
 
 
 
 // this UniDirectional execute cascade some object and execute other object as part of this object
 
-public class UniDirectional {
-
+public class UniDirectionalOneToOne {
     public static void main(String[] args) {
         getDividendsAndDetails();
 
@@ -17,17 +17,11 @@ public class UniDirectional {
 
 
     public static void addUniDirectional(){
-
         //using util class HibernateConnector and her methods
         HibernateConnector.getSessionFactoryWithContactDetails();
-
-
-
         try {
-
             //open session through getCurrentSession();
             Session session = HibernateConnector.getSessionFactoryWithContactDetails().getCurrentSession();
-
             //create object
             Dividends dividends =
                     new Dividends("01.02.1900","FORD",4_000_000);
@@ -46,13 +40,9 @@ public class UniDirectional {
             //get transaction and commit
             session.getTransaction().commit();
         }
-
         finally {
-
             //finally close session factory
             HibernateConnector.closeSessionFactory();
-
-
         }
     }
 
@@ -62,29 +52,18 @@ public class UniDirectional {
         HibernateConnector.getSessionFactoryWithContactDetails();
 
         Session session = null;
-
         try {
-
             //get current session
-
             session = HibernateConnector.getSessionFactoryWithContactDetails().getCurrentSession();
-
-
             //begin transaction
             session.beginTransaction();
-
-
             //create object
             Dividends dividends = session.get(Dividends.class,6);
-
-
-            //
             //System.out.println(dividends);
 
 
             //get transaction commit and close
             session.getTransaction().commit();
-
         }
         finally {
 

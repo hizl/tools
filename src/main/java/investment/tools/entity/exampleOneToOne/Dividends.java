@@ -1,4 +1,4 @@
-package investment.tools.entity;
+package investment.tools.entity.exampleOneToOne;
 
 
 import lombok.Data;
@@ -17,13 +17,19 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor()
 public class Dividends {
 
-    //описание связи
+  /*  //описание связи
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "details_id")
     //
+    private ContactDetails contactDetails;*/
+
+
+
+    //для демонстрации примера с изменением cascade
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "details_id")
+    //
     private ContactDetails contactDetails;
-
-
 
 
 

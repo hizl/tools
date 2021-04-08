@@ -1,6 +1,7 @@
-package investment.tools.Hibirnate;
+package investment.tools.Hibirnate.OneToOne.justRequesHibernate;
 
-import investment.tools.entity.Dividends;
+import investment.tools.Hibirnate.OneToOne.HibernateConnector;
+import investment.tools.entity.exampleOneToOne.Dividends;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
